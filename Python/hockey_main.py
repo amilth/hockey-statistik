@@ -19,8 +19,7 @@ class UI(QMainWindow):
         self.pushButtonDisconnectFromDB.clicked.connect(self.DisconnectFromDB)
         self.pushButtonTopTenPlayers.clicked.connect(lambda: self.GetTop10Players(10))
         self.pushButtonTopTenTeams.clicked.connect(lambda: self.GetTop10Teams(10))
-        #ToDo: lägg till kod för knapp top 10 events.
-
+        self.pushButtonTopTenSalaries.clicked.connect(lambda: self.GetTop10Salaries(10))
 
 
     def ConnectToDB(self):
@@ -54,13 +53,23 @@ class UI(QMainWindow):
 
     def DisconnectFromDB(self):
         if not self.dBConn:
-            print("Nothing to disconnect.")
+            # print("Nothing to disconnect.")
             return
+        database = self.dBConn._database
+        host = self.dBConn._host
         self.dBConn.close()
         self.dBConn = None
         if not self.dBConn:
-            print('Disconnected from MySQL database.')
-            sys.exit(app.exec())
+            QMessageBox.information(
+                None,
+                "App Name - Success!",
+                "Disconnected from {} at {}".format(
+                    database, 
+                    host
+                    ),
+            )
+            # print('Disconnected from MySQL database.')
+            # sys.exit(app.exec())
 
 
     def GetTop10Players(self, limit):
@@ -83,9 +92,14 @@ class UI(QMainWindow):
         self.tableWidgetTopTen.setRowCount(limit)
         self.tableWidgetTopTen.setHorizontalHeaderLabels(cursor.column_names)
         
+        chart_title= "Best players of all time"
         data = cursor.fetchall()
-        self.AddDataToTable(data)
-        self.ShowChartPie(data)
+        self.addDataToTable(data)
+
+        subData = [(x[0], x[2]) for x in data]
+        
+        self.deleteItemsOfLayout(self.chart_area_layout)
+        self.addChartPie(subData, chart_title, self.chart_area_layout)
 
 
     def GetTop10Teams(self, limit):
@@ -106,21 +120,74 @@ class UI(QMainWindow):
         self.tableWidgetTopTen.setColumnCount(len(cursor.column_names))
         self.tableWidgetTopTen.setRowCount(limit)
         self.tableWidgetTopTen.setHorizontalHeaderLabels(cursor.column_names)
+
+        chart_title= "Best teams of all time"
+        data = cursor.fetchall()
+        self.addDataToTable(data)
+
+        subData = [(x[0], x[1]) for x in data]
+
+        self.deleteItemsOfLayout(self.chart_area_layout)
+        self.addChartStackedBar(subData, chart_title, self.chart_area_layout)
+
+
+    def GetTop10Salaries(self, limit):
+
+        if not self.dBConn:
+            print("No connection found.")
+            return
+        
+        cursor = self.dBConn.cursor()
+        query = """ with lön as (
+	                    SELECT s.PlayerName, max(s.Salary) as Salary
+	                    FROM hockey.player_salaries as s
+	                    group by s.PlayerName
+                    ),
+                    season as (
+	                    SELECT s2.PlayerName, s2.Salary, s2.Season 
+                        FROM hockey.player_salaries as s2
+                    )
+                    select lön.PlayerName
+	                     , lön.Salary
+                         , concat(left(min(s2.Season), 4), '-', right(max(s2.Season), 4)) as Seasons
+                         , cast(right(max(s2.Season), 4) as SIGNED) - cast(left(min(s2.Season), 4) as SIGNED) as number_of_seasons
+                    from lön
+                    join season as s2 on s2.PlayerName = lön.PlayerName
+                        and s2.Salary = lön.Salary
+                    group by lön.PlayerName, lön.Salary
+                    order by lön.Salary desc
+                    limit %s;
+                """
+        cursor.execute(query, (limit,))
+
+        self.tableWidgetTopTen.setColumnCount(len(cursor.column_names))
+        self.tableWidgetTopTen.setRowCount(limit)
+        self.tableWidgetTopTen.setHorizontalHeaderLabels(cursor.column_names)
         
         data = cursor.fetchall()
-        self.AddDataToTable(data)
-        self.ShowChartStackedBar(data)
+        self.addDataToTable(data)
+
+        self.deleteItemsOfLayout(self.chart_area_layout)
+
+        # Chart order is reversed. First chart will be placed at the bottom.
+        chart_title= "Players with highest salaries of all time"
+        subDataSalary = [(x[0], x[1]) for x in data]
+        self.addChartStackedBar(subDataSalary, chart_title, self.chart_area_layout)
+        
+        chart_title= "Corresponding number of seasons"
+        subDataSeasons = [(x[0], x[3]) for x in data]
+        self.addChartStackedBar(subDataSeasons, chart_title, self.chart_area_layout)
 
 
-    def AddDataToTable(self, data):
+    def addDataToTable(self, data):
         for rowNum, rowData in enumerate(data):
             for colNum, colData in enumerate(rowData):
                 self.tableWidgetTopTen.setItem(rowNum, colNum, QTableWidgetItem(str(colData)))
         
             
-    def ShowChartPie(self, data):
+    def addChartPie(self, data, chart_title, layout):
         players = [x[0] for x in data]
-        goals = [x[2] for x in data]
+        goals = [x[1] for x in data]
 
         series = QtChart.QPieSeries()
         for x in players:
@@ -134,7 +201,7 @@ class UI(QMainWindow):
         
         chart = QtChart.QChart()
         chart.addSeries(series)
-        chart.setTitle("Best players of all time")
+        chart.setTitle(chart_title)
         chart.legend().setAlignment(Qt.AlignLeft)
         chart.setAnimationOptions(QtChart.QChart.SeriesAnimations)
         chart.setTheme(QtChart.QChart.ChartTheme.ChartThemeQt)
@@ -142,13 +209,12 @@ class UI(QMainWindow):
         chartview = QtChart.QChartView(chart)
 
         self.chart_area.setContentsMargins(0, 0, 0, 0)
-        self.chart_area_layout.setContentsMargins(0, 0, 0, 0)
+        layout.setContentsMargins(0, 0, 0, 0)
         
-        self.addReplaceChartInLayout(chartview, self.chart_area_layout)
+        self.addChartInLayout(chartview, layout)
 
 
-    def ShowChartStackedBar(self, data):
-        
+    def addChartStackedBar(self, data, chart_title, layout):
         teams = [x[0] for x in data]
         goals = [x[1] for x in data]
 
@@ -160,7 +226,7 @@ class UI(QMainWindow):
 
         chart = QtChart.QChart()
         chart.addSeries(series)
-        chart.setTitle("Best teams of all time")
+        chart.setTitle(chart_title)
         chart.setAnimationOptions(QtChart.QChart.SeriesAnimations)
 
         categories = ["Goals"]
@@ -173,26 +239,33 @@ class UI(QMainWindow):
         chartview = QtChart.QChartView(chart)
 
         self.chart_area.setContentsMargins(0, 0, 0, 0)
-        self.chart_area_layout.setContentsMargins(0, 0, 0, 0)
+        layout.setContentsMargins(0, 0, 0, 0)
 
-        self.addReplaceChartInLayout(chartview, self.chart_area_layout)
+        self.addChartInLayout(chartview, layout)
+
+
+    def addChartInLayout(self, newchartview, layout):
+        count = self.chart_area_layout.count() + 1
+        layout.insertWidget(count, newchartview, 100)
 
 
     def addReplaceChartInLayout(self, newchartview, layout):
         #Delete previus Chart or other that is occupying the layout.
-        self.deleteLaterGroupBox(layout)
+        self.deleteItemsOfLayout(layout)
 
         count = self.chart_area_layout.count() - 1
         layout.insertWidget(count, newchartview)
 
 
-    def deleteLaterGroupBox(self, layout):
-        count = layout.count()
-        if count == 0:
-            return
-        item = layout.itemAt(count - 1)
-        widget = item.widget()
-        widget.deleteLater()
+    def deleteItemsOfLayout(self, layout):
+        if layout is not None:
+            while layout.count():
+                item = layout.takeAt(0)
+                widget = item.widget()
+                if widget is not None:
+                    widget.setParent(None)
+                else:
+                    self.deleteItemsOfLayout(item.layout())
 
 
 #Initiera UI-fönstret från designverktyget.

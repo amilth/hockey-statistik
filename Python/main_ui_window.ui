@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>978</width>
+    <width>1127</width>
     <height>405</height>
    </rect>
   </property>
@@ -102,7 +102,7 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButtonTopTenEvents">
+        <widget class="QPushButton" name="pushButtonTopTenSalaries">
          <property name="maximumSize">
           <size>
            <width>250</width>
@@ -113,12 +113,13 @@
           <font>
            <family>MS Shell Dlg 2</family>
            <pointsize>16</pointsize>
+           <weight>9</weight>
            <italic>false</italic>
            <bold>false</bold>
           </font>
          </property>
          <property name="text">
-          <string>Get top 10 events</string>
+          <string>Get highest 10 salaries</string>
          </property>
         </widget>
        </item>
@@ -140,9 +141,15 @@
     </item>
     <item>
      <widget class="QTableWidget" name="tableWidgetTopTen">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>0</height>
+       </size>
+      </property>
       <property name="maximumSize">
        <size>
-        <width>250</width>
+        <width>300</width>
         <height>16777215</height>
        </size>
       </property>
@@ -180,6 +187,9 @@
         <height>0</height>
        </size>
       </property>
+      <property name="layoutDirection">
+       <enum>Qt::LeftToRight</enum>
+      </property>
       <property name="autoFillBackground">
        <bool>false</bool>
       </property>
@@ -213,8 +223,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>978</width>
-     <height>22</height>
+     <width>1127</width>
+     <height>21</height>
     </rect>
    </property>
   </widget>
