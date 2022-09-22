@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 ################################################################################
-## Form generated from reading UI file 'main_ui_window.ui'
+## Form generated from reading UI file 'search_database.ui'
 ##
 ## Created by: Qt User Interface Compiler version 6.3.1
 ##
@@ -121,7 +121,7 @@ class Ui_MainWindow(object):
         MainWindow.setStatusBar(self.statusbar)
         self.menubar = QMenuBar(MainWindow)
         self.menubar.setObjectName(u"menubar")
-        self.menubar.setGeometry(QRect(0, 0, 1127, 21))
+        self.menubar.setGeometry(QRect(0, 0, 1127, 22))
         MainWindow.setMenuBar(self.menubar)
 
         self.retranslateUi(MainWindow)

@@ -7,71 +7,27 @@ import sys
 
 
 #Hämta in ui gränssnittet från designverktyget.
-class UI(QMainWindow):
+# class UI(QMainWindow):
+class SEARCH(QMainWindow):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        uic.loadUi("Python\\main_ui_window.ui", self)
+        uic.loadUi("Python\\search_database.ui", self)
 
-        self.dBConn = None
+        # self.dBConn = None
 
         #Window.ButtonName.Event.RunThis
-        self.pushButtonConnectToDB.clicked.connect(self.ConnectToDB)
-        self.pushButtonDisconnectFromDB.clicked.connect(self.DisconnectFromDB)
-        self.pushButtonTopTenPlayers.clicked.connect(lambda: self.GetTop10Players(10))
-        self.pushButtonTopTenTeams.clicked.connect(lambda: self.GetTop10Teams(10))
-        self.pushButtonTopTenSalaries.clicked.connect(lambda: self.GetTop10Salaries(10))
+        # self.pushButtonConnectToDB.clicked.connect(self.ConnectToDB)
+        # self.pushButtonDisconnectFromDB.clicked.connect(self.DisconnectFromDB)
+        # self.pushButtonTopTenPlayers.clicked.connect(lambda: self.GetTop10Players(10))
+        # self.pushButtonTopTenTeams.clicked.connect(lambda: self.GetTop10Teams(10))
+        # self.pushButtonTopTenSalaries.clicked.connect(lambda: self.GetTop10Salaries(10))
 
+    
+    def skycake():
+        print ("SkyCake evolves to stay just beyond the cognitive reach of " +
+        "the bulk of men. SKYCAKE!!")
 
-    def ConnectToDB(self):
-        try:
-            self.dBConn = connect(
-                host="185.157.160.111",
-                port="33306",
-                user="my_db_admin",
-                password="mysql",
-                database="hockey"
-            )
-
-            if self.dBConn:
-                QMessageBox.information(
-                    None,
-                    "App Name - Success!",
-                    "Connected to {} at {}".format(
-                        self.dBConn._database, 
-                        self.dBConn._host
-                        ),
-                )
-
-        except Error as err:
-            QMessageBox.critical(
-                None,
-                "App Name - Error!",
-                "Database Error: {}".format(err._full_msg),
-            )
-            sys.exit(1)
-
-
-    def DisconnectFromDB(self):
-        if not self.dBConn:
-            # print("Nothing to disconnect.")
-            return
-        database = self.dBConn._database
-        host = self.dBConn._host
-        self.dBConn.close()
-        self.dBConn = None
-        if not self.dBConn:
-            QMessageBox.information(
-                None,
-                "App Name - Success!",
-                "Disconnected from {} at {}".format(
-                    database, 
-                    host
-                    ),
-            )
-            # print('Disconnected from MySQL database.')
-            # sys.exit(app.exec())
-
-
+    
     def GetTop10Players(self, limit):
         if not self.dBConn:
             print("No connection found.")
@@ -94,12 +50,12 @@ class UI(QMainWindow):
         
         chart_title= "Best players of all time"
         data = cursor.fetchall()
-        self.addDataToTable(data)
+        SEARCH.addDataToTable(self, data)
 
         subData = [(x[0], x[2]) for x in data]
         
-        self.deleteItemsOfLayout(self.chart_area_layout)
-        self.addChartPie(subData, chart_title, self.chart_area_layout)
+        SEARCH.deleteItemsOfLayout(self, self.chart_area_layout)
+        SEARCH.addChartPie(self, subData, chart_title, self.chart_area_layout)
 
 
     def GetTop10Teams(self, limit):
@@ -123,12 +79,12 @@ class UI(QMainWindow):
 
         chart_title= "Best teams of all time"
         data = cursor.fetchall()
-        self.addDataToTable(data)
+        SEARCH.addDataToTable(self, data)
 
         subData = [(x[0], x[1]) for x in data]
 
-        self.deleteItemsOfLayout(self.chart_area_layout)
-        self.addChartStackedBar(subData, chart_title, self.chart_area_layout)
+        SEARCH.deleteItemsOfLayout(self, self.chart_area_layout)
+        SEARCH.addChartStackedBar(self, subData, chart_title, self.chart_area_layout)
 
 
     def GetTop10Salaries(self, limit):
@@ -165,18 +121,18 @@ class UI(QMainWindow):
         self.tableWidgetTopTen.setHorizontalHeaderLabels(cursor.column_names)
         
         data = cursor.fetchall()
-        self.addDataToTable(data)
+        SEARCH.addDataToTable(self, data)
 
-        self.deleteItemsOfLayout(self.chart_area_layout)
+        SEARCH.deleteItemsOfLayout(self, self.chart_area_layout)
 
         # Chart order is reversed. First chart will be placed at the bottom.
         chart_title= "Players with highest salaries of all time"
         subDataSalary = [(x[0], x[1]) for x in data]
-        self.addChartStackedBar(subDataSalary, chart_title, self.chart_area_layout)
+        SEARCH.addChartStackedBar(self, subDataSalary, chart_title, self.chart_area_layout)
         
         chart_title= "Corresponding number of seasons"
         subDataSeasons = [(x[0], x[3]) for x in data]
-        self.addChartStackedBar(subDataSeasons, chart_title, self.chart_area_layout)
+        SEARCH.addChartStackedBar(self, subDataSeasons, chart_title, self.chart_area_layout)
 
 
     def addDataToTable(self, data):
@@ -211,7 +167,7 @@ class UI(QMainWindow):
         self.chart_area.setContentsMargins(0, 0, 0, 0)
         layout.setContentsMargins(0, 0, 0, 0)
         
-        self.addChartInLayout(chartview, layout)
+        SEARCH.addChartInLayout(self, chartview, layout)
 
 
     def addChartStackedBar(self, data, chart_title, layout):
@@ -241,7 +197,7 @@ class UI(QMainWindow):
         self.chart_area.setContentsMargins(0, 0, 0, 0)
         layout.setContentsMargins(0, 0, 0, 0)
 
-        self.addChartInLayout(chartview, layout)
+        SEARCH.addChartInLayout(self, chartview, layout)
 
 
     def addChartInLayout(self, newchartview, layout):
@@ -269,7 +225,7 @@ class UI(QMainWindow):
 
 
 #Initiera UI-fönstret från designverktyget.
-app = QApplication(sys.argv)
-window = UI()
-window.show()
-sys.exit(app.exec())
+# app = QApplication(sys.argv)
+# window = UI()
+# window.show()
+# sys.exit(app.exec())

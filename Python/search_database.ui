@@ -100,7 +100,6 @@
           <font>
            <family>MS Shell Dlg 2</family>
            <pointsize>16</pointsize>
-           <weight>9</weight>
            <italic>false</italic>
            <bold>false</bold>
           </font>
@@ -198,7 +197,7 @@
      <x>0</x>
      <y>0</y>
      <width>1127</width>
-     <height>21</height>
+     <height>22</height>
     </rect>
    </property>
   </widget>
