@@ -1,0 +1,57 @@
+# Resource object code (Python 3)
+# Created by: object code
+# Created by: The Resource Compiler for Qt version 6.4.2
+# WARNING! All changes made in this file will be lost!
+
+from PySide6 import QtCore
+
+qt_resource_data = b"\
+\x00\x00\x01\x16\
+C\
+olorless\x0agreen\x0ai\
+deas\x0asleep\x0afurio\
+usly\x0aA\x0acolorless\
+\x0agreen\x0aidea\x0ais\x0aa\
+\x0anew\x0auntried\x0aide\
+a\x0athat\x0ais\x0awithou\
+t\x0avividness\x0adull\
+\x0aand\x0aunexciting\x0a\
+To\x0asleep\x0afurious\
+ly\x0amay\x0aseem\x0aa\x0apu\
+zzling\x0aturn\x0aof\x0ap\
+hrase\x0abut\x0athe\x0ami\
+nd\x0ain\x0asleep\x0aofte\
+n\x0aindeed\x0amoves\x0af\
+uriously\x0awith\x0aid\
+eas\x0aand\x0aimages\x0af\
+lickering\x0ain\x0aand\
+\x0aout\x0a\
+"
+
+qt_resource_name = b"\
+\x00\x0a\
+\x0b\x0b\x17\xd9\
+\x00d\
+\x00i\x00c\x00t\x00i\x00o\x00n\x00a\x00r\x00y\
+\x00\x09\
+\x08\xb6\xa74\
+\x00w\
+\x00o\x00r\x00d\x00s\x00.\x00t\x00x\x00t\
+"
+
+qt_resource_struct = b"\
+\x00\x00\x00\x00\x00\x02\x00\x00\x00\x01\x00\x00\x00\x01\
+\x00\x00\x00\x00\x00\x00\x00\x00\
+\x00\x00\x00\x00\x00\x02\x00\x00\x00\x01\x00\x00\x00\x02\
+\x00\x00\x00\x00\x00\x00\x00\x00\
+\x00\x00\x00\x1a\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\
+\x00\x00\x01=\xfb\x96\x19\x98\
+"
+
+def qInitResources():
+    QtCore.qRegisterResourceData(0x03, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+def qCleanupResources():
+    QtCore.qUnregisterResourceData(0x03, qt_resource_struct, qt_resource_name, qt_resource_data)
+
+qInitResources()
