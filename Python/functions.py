@@ -3,7 +3,7 @@ import pandas as pd
 import re
 
 from PySide6.QtWidgets import QDialog
-from ui.ui_dialog_ConnectToDatabase import Ui_Dialog
+from ui.dialog_ConnectToDatabase_ui import Ui_Dialog
 
 
 def ConnectToMySQLDBviaSQLAlchemy():
@@ -17,10 +17,9 @@ def ConnectToMySQLDBviaSQLAlchemy():
         password = ui.le_password.text()
         host = ui.le_host.text()
         port = ui.le_port.text()
-        db = ui.le_database.text()
+        dataBase = ui.le_database.text()
 
-        # engine = db.create_engine("mysql+pymysql://my_db_admin:mysql@185.157.160.111:33306/hockey")
-        connString = driver+"://"+username+":"+password+"@"+host+":"+port+"/"+db
+        connString = f"{driver}://{username}:{password}@{host}:{port}/{dataBase}"
         engine = db.create_engine(connString)
         connection = engine.connect()
         return connection

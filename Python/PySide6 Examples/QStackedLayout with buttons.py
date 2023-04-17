@@ -12,7 +12,7 @@ from PySide6.QtWidgets import (
     QWidget,
 )
 
-from layout_colorwidget import Color
+# from layout_colorwidget import Color
 
 
 class MainWindow(QMainWindow):

@@ -1,117 +1,122 @@
 # Resource object code (Python 3)
 # Created by: object code
-# Created by: The Resource Compiler for Qt version 6.4.2
+# Created by: The Resource Compiler for Qt version 6.3.1
 # WARNING! All changes made in this file will be lost!
 
 from PySide6 import QtCore
 
 qt_resource_data = b"\
-\x00\x00\x06y\
+\x00\x00\x06\xc8\
 T\
-EMPLATE = app\x0aLA\
-NGUAGE = C++\x0aTAR\
-GET         = as\
-sistant\x0a\x0aCONFIG \
-       += qt war\
-n_on\x0aQT         \
-   += xml networ\
-k\x0a\x0aPROJECTNAME  \
-      = Assistan\
-t\x0aDESTDIR       \
-     = ../../bin\
-\x0a\x0aFORMS += findd\
-ialog.ui \x5c\x0a     \
-   helpdialog.ui\
- \x5c\x0a        mainw\
-indow.ui \x5c\x0a     \
-   settingsdialo\
-g.ui \x5c\x0a        t\
-abbedbrowser.ui \
-\x5c\x0a        topicc\
-hooser.ui\x0a\x0aSOURC\
-ES += main.cpp \x5c\
-\x0a        helpwin\
-dow.cpp \x5c\x0a      \
-  topicchooser.c\
-pp \x5c\x0a        doc\
-uparser.cpp \x5c\x0a  \
-      settingsdi\
-alog.cpp \x5c\x0a     \
-   index.cpp \x5c\x0a \
-       profile.c\
-pp \x5c\x0a        con\
-fig.cpp \x5c\x0a      \
-  finddialog.cpp\
- \x5c\x0a        helpd\
-ialog.cpp \x5c\x0a    \
-    mainwindow.c\
-pp \x5c\x0a        tab\
-bedbrowser.cpp\x0a\x0a\
-HEADERS        +\
-= helpwindow.h \x5c\
+EMPLATE = app\x0d\x0aL\
+ANGUAGE = C++\x0d\x0aT\
+ARGET         = \
+assistant\x0d\x0a\x0d\x0aCON\
+FIG        += qt\
+ warn_on\x0d\x0aQT    \
+        += xml n\
+etwork\x0d\x0a\x0d\x0aPROJEC\
+TNAME        = A\
+ssistant\x0d\x0aDESTDI\
+R            = .\
+./../bin\x0d\x0a\x0d\x0aFORM\
+S += finddialog.\
+ui \x5c\x0d\x0a        he\
+lpdialog.ui \x5c\x0d\x0a \
+       mainwindo\
+w.ui \x5c\x0d\x0a        \
+settingsdialog.u\
+i \x5c\x0d\x0a        tab\
+bedbrowser.ui \x5c\x0d\
 \x0a        topicch\
-ooser.h \x5c\x0a      \
+ooser.ui\x0d\x0a\x0d\x0aSOUR\
+CES += main.cpp \
+\x5c\x0d\x0a        helpw\
+indow.cpp \x5c\x0d\x0a   \
+     topicchoose\
+r.cpp \x5c\x0d\x0a       \
+ docuparser.cpp \
+\x5c\x0d\x0a        setti\
+ngsdialog.cpp \x5c\x0d\
+\x0a        index.c\
+pp \x5c\x0d\x0a        pr\
+ofile.cpp \x5c\x0d\x0a   \
+     config.cpp \
+\x5c\x0d\x0a        findd\
+ialog.cpp \x5c\x0d\x0a   \
+     helpdialog.\
+cpp \x5c\x0d\x0a        m\
+ainwindow.cpp \x5c\x0d\
+\x0a        tabbedb\
+rowser.cpp\x0d\x0a\x0d\x0aHE\
+ADERS        += \
+helpwindow.h \x5c\x0d\x0a\
+        topiccho\
+oser.h \x5c\x0d\x0a      \
   docuparser.h \x5c\
-\x0a        setting\
-sdialog.h \x5c\x0a    \
-    index.h \x5c\x0a  \
-      profile.h \
-\x5c\x0a        finddi\
-alog.h \x5c\x0a       \
- helpdialog.h \x5c\x0a\
-        mainwind\
-ow.h \x5c\x0a        t\
-abbedbrowser.h \x5c\
-\x0a        config.\
-h\x0a\x0aRESOURCES += \
-assistant.qrc\x0a\x0aD\
-EFINES += QT_KEY\
-WORDS\x0a#DEFINES +\
-=  QT_PALMTOPCEN\
-TER_DOCS\x0a!networ\
-k:DEFINES       \
- += QT_INTERNAL_\
-NETWORK\x0aelse:QT \
-+= network\x0a!xml:\
+\x0d\x0a        settin\
+gsdialog.h \x5c\x0d\x0a  \
+      index.h \x5c\x0d\
+\x0a        profile\
+.h \x5c\x0d\x0a        fi\
+nddialog.h \x5c\x0d\x0a  \
+      helpdialog\
+.h \x5c\x0d\x0a        ma\
+inwindow.h \x5c\x0d\x0a  \
+      tabbedbrow\
+ser.h \x5c\x0d\x0a       \
+ config.h\x0d\x0a\x0d\x0aRES\
+OURCES += assist\
+ant.qrc\x0d\x0a\x0d\x0aDEFIN\
+ES += QT_KEYWORD\
+S\x0d\x0a#DEFINES +=  \
+QT_PALMTOPCENTER\
+_DOCS\x0d\x0a!network:\
+DEFINES        +\
+= QT_INTERNAL_NE\
+TWORK\x0d\x0aelse:QT +\
+= network\x0d\x0a!xml:\
  DEFINES        \
         += QT_IN\
-TERNAL_XML\x0aelse:\
-QT += xml\x0ainclud\
-e( ../../src/qt_\
-professional.pri\
- )\x0a\x0awin32 {\x0a    \
-LIBS += -lshell3\
-2\x0a    RC_FILE = \
-assistant.rc\x0a}\x0a\x0a\
-mac {\x0a    ICON =\
- assistant.icns\x0a\
-    TARGET = ass\
-istant\x0a#    QMAK\
-E_INFO_PLIST = I\
-nfo_mac.plist\x0a}\x0a\
-\x0a#target.path = \
-$$[QT_INSTALL_BI\
-NS]\x0a#INSTALLS +=\
- target\x0a\x0a#assist\
-anttranslations.\
-files = *.qm\x0a#as\
-sistanttranslati\
-ons.path = $$[QT\
-_INSTALL_TRANSLA\
-TIONS]\x0a#INSTALLS\
- += assistanttra\
-nslations\x0a\x0aTRANS\
-LATIONS        =\
- assistant_de.ts\
- \x5c\x0a             \
-     assistant_f\
-r.ts\x0a\x0a\x0aunix:!con\
-tains(QT_CONFIG,\
- zlib):LIBS += -\
-lz\x0a\x0a\x0atarget.path\
-=$$[QT_INSTALL_B\
-INS]\x0aINSTALLS +=\
- target\x0a\
+TERNAL_XML\x0d\x0aelse\
+:QT += xml\x0d\x0aincl\
+ude( ../../src/q\
+t_professional.p\
+ri )\x0d\x0a\x0d\x0awin32 {\x0d\
+\x0a    LIBS += -ls\
+hell32\x0d\x0a    RC_F\
+ILE = assistant.\
+rc\x0d\x0a}\x0d\x0a\x0d\x0amac {\x0d\x0a\
+    ICON = assis\
+tant.icns\x0d\x0a    T\
+ARGET = assistan\
+t\x0d\x0a#    QMAKE_IN\
+FO_PLIST = Info_\
+mac.plist\x0d\x0a}\x0d\x0a\x0d\x0a\
+#target.path = $\
+$[QT_INSTALL_BIN\
+S]\x0d\x0a#INSTALLS +=\
+ target\x0d\x0a\x0d\x0a#assi\
+stanttranslation\
+s.files = *.qm\x0d\x0a\
+#assistanttransl\
+ations.path = $$\
+[QT_INSTALL_TRAN\
+SLATIONS]\x0d\x0a#INST\
+ALLS += assistan\
+ttranslations\x0d\x0a\x0d\
+\x0aTRANSLATIONS   \
+     = assistant\
+_de.ts \x5c\x0d\x0a      \
+            assi\
+stant_fr.ts\x0d\x0a\x0d\x0a\x0d\
+\x0aunix:!contains(\
+QT_CONFIG, zlib)\
+:LIBS += -lz\x0d\x0a\x0d\x0a\
+\x0d\x0atarget.path=$$\
+[QT_INSTALL_BINS\
+]\x0d\x0aINSTALLS += t\
+arget\x0d\x0a\
 "
 
 qt_resource_name = b"\
@@ -131,7 +136,7 @@ qt_resource_struct = b"\
 \x00\x00\x00\x00\x00\x02\x00\x00\x00\x01\x00\x00\x00\x02\
 \x00\x00\x00\x00\x00\x00\x00\x00\
 \x00\x00\x00\x16\x00\x00\x00\x00\x00\x01\x00\x00\x00\x00\
-\x00\x00\x01=\xfb\x96\x19\x98\
+\x00\x00\x01\x873f\x1c\xce\
 "
 
 def qInitResources():

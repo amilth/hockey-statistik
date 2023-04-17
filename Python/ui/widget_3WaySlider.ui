@@ -1,0 +1,373 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ThreeWaySlider</class>
+ <widget class="QWidget" name="ThreeWaySlider">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>577</width>
+    <height>464</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QHBoxLayout" name="layout_ThreeWaySlider">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_left">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_slider_left">
+       <item>
+        <widget class="QSlider" name="verticalSlider_left">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QDial" name="dial_left"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_left"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_middle">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_slider_middle">
+       <item>
+        <widget class="QSlider" name="verticalSlider_middle">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QDial" name="dial_middle"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_middle"/>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_right">
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_slider_right">
+       <item>
+        <widget class="QSlider" name="verticalSlider_right">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QDial" name="dial_right"/>
+     </item>
+     <item>
+      <widget class="QSpinBox" name="spinBox_right"/>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>verticalSlider_left</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>dial_left</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>110</x>
+     <y>185</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>169</x>
+     <y>334</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verticalSlider_left</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_left</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>110</x>
+     <y>166</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>180</x>
+     <y>445</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_left</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>verticalSlider_left</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>31</x>
+     <y>326</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>91</x>
+     <y>39</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_left</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_left</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>99</x>
+     <y>380</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>99</x>
+     <y>446</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_left</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dial_left</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>59</x>
+     <y>432</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>59</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_left</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>verticalSlider_left</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>10</x>
+     <y>432</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>92</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verticalSlider_middle</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>dial_middle</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>204</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verticalSlider_middle</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_middle</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>21</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>204</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_middle</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>verticalSlider_middle</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>326</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>285</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_middle</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_middle</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>326</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>204</x>
+     <y>432</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_middle</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dial_middle</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>432</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>204</x>
+     <y>326</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_middle</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>verticalSlider_middle</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>204</x>
+     <y>432</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>285</x>
+     <y>21</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verticalSlider_right</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>dial_right</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>475</x>
+     <y>134</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>550</x>
+     <y>384</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>verticalSlider_right</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_right</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>476</x>
+     <y>110</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>563</x>
+     <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_right</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>verticalSlider_right</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>398</x>
+     <y>442</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>473</x>
+     <y>42</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spinBox_right</sender>
+   <signal>valueChanged(int)</signal>
+   <receiver>dial_right</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>423</x>
+     <y>444</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>421</x>
+     <y>368</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_right</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>verticalSlider_right</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>503</x>
+     <y>362</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>478</x>
+     <y>242</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>dial_right</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>spinBox_right</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>464</x>
+     <y>375</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>496</x>
+     <y>446</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
